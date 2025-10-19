@@ -10,7 +10,7 @@ class Hewan {
   }
 }
 
-// Kelas turunan (subclass)
+// Kelas turunan (subclass) //pewarisan
 class Kucing extends Hewan {
   constructor(nama, warna) {
     super(nama, "Kucing"); // Memanggil constructor superclass
@@ -22,15 +22,14 @@ const milo = new Kucing("Milo", "Putih");
 console.log(milo.nama);  // Milo
 console.log(milo.jenis); // Kucing (Didapat dari superclass)
 
-// ---------------------------------
 
-class Anjing extends Hewan {
+class Anjing extends Hewan { // pewarisan: Kelas Anjing mewarisi Hewan
   constructor(nama, warna) {
     super(nama, "Anjing");
     this.warna = warna;
   }
 
-  // Overriding method
+  // Overriding method  // polimorfisme: Method suara() dioverride untuk perilaku berbeda
   suara() {
     return `${this.nama} menggonggong: Woof woof!`;
   }
@@ -39,9 +38,9 @@ class Anjing extends Hewan {
 const doge = new Anjing("Doge", "Coklat");
 console.log(doge.suara()); // Doge menggonggong: Woof woof!
 
-// ---------------------------------
 
-class Serigala extends Hewan {
+
+class Serigala extends Hewan {   // pewarisan + polimorfisme: Method suara() dimodifikasi
   constructor(nama, warna) {
     super(nama, "Serigala");
     this.warna = warna;
@@ -56,9 +55,9 @@ class Serigala extends Hewan {
 const alpha = new Serigala("Alpha", "Abu-abu");
 console.log(alpha.suara()); // Alpha bersuara... Auuuuu~
 
-// ---------------------------------
 
-class Burung extends Hewan {
+
+class Burung extends Hewan {   // pewarisan + polimorfisme
   constructor(nama) {
     super(nama, "Burung");
   }
@@ -68,7 +67,7 @@ class Burung extends Hewan {
   }
 }
 
-// ---------------------------------
+
 
 const hewanList = [
   new Kucing("Milo", "Putih"),
