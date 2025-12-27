@@ -57,14 +57,14 @@
       color: #444;
     }
 
-    .user-info {
-      text-align: center;
-    }
-
     #logoutBtn {
       margin-top: 15px;
-      background: #e53935;
+      background: #e53935; /* MERAH */
       color: white;
+    }
+
+    .user-info {
+      text-align: center;
     }
   </style>
 </head>
@@ -80,7 +80,6 @@
         this.renderLogin();
       }
 
-      // Inisialisasi data user ke localStorage
       initData() {
         if (!localStorage.getItem('users')) {
           const users = [
@@ -91,7 +90,6 @@
         }
       }
 
-      // Tampilkan form login
       renderLogin() {
         this.container.innerHTML = `
           <h2>Login</h2>
@@ -108,7 +106,6 @@
           .addEventListener('click', () => this.cancel());
       }
 
-      // Proses login
       login() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
@@ -126,13 +123,11 @@
         }
       }
 
-      // Halaman setelah login berhasil
       renderUserPage(username) {
         this.container.innerHTML = `
           <div class="user-info">
-            <h2>Login Berhasil</h2>
+            <h2>Berhasil login ✅</h2>
             <p>Hallo <b>${username}</b>, selamat datang di sistem</p>
-            <p>Selamat, berhasil login ✅</p>
             <button id="logoutBtn">Logout</button>
           </div>
         `;
@@ -141,24 +136,16 @@
           .addEventListener('click', () => this.logout());
       }
 
-      // Logout
       logout() {
         this.renderLogin();
-      }</b>, selamat datang di sistem</p>
-            <p>Selamat, berhasil login ✅</p>
-            <button id="logoutBtn">Logout</button>
-          </div>
-        `;
       }
 
-      // Tombol cancel
       cancel() {
         document.getElementById('username').value = '';
         document.getElementById('password').value = '';
       }
     }
 
-    // Jalankan aplikasi
     new LoginApp('app');
   </script>
 
