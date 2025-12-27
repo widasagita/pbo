@@ -1,1 +1,113 @@
-wida sagita
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplikasi Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #fff;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .user-info {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box" id="app"></div>
+
+<script>
+class LoginApp {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.initData();
+    this.renderLogin();
+  }
+
+  // Inisialisasi data user ke localStorage (jika belum ada)
+  initData() {
+    if (!localStorage.getItem('users')) {
+      const users = [
+        { username: 'admin', password: '12345' },
+        { username: 'user', password: 'user123' }
+      ];
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+  }
+
+  // Menampilkan form login
+  renderLogin() {
+    this.container.innerHTML = `
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button id="loginBtn">Login</button>
+    `;
+
+    document.getElementById('loginBtn')
+      .addEventListener('click', () => this.login());
+  }
+
+  // Proses login
+  login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const users = JSON.parse(localStorage.getItem('users'));
+
+    const found = users.find(
+      user => user.username === username && user.password === password
+    );
+
+    if (!found) {
+      alert('Ups! Username atau password salah.');
+    } else {
+      this.renderUserPage(found.username);
+    }
+  }
+
+  // Halaman setelah login berhasil
+  renderUserPage(username) {
+    this.container.innerHTML = `
+      <div class="user-info">
+        <h2>Login Berhasil</h2>
+        <p>Selamat datang, <b>${username}</b></p>
+      </div>
+    `;
+  }
+}
+
+// Jalankan aplikasi
+new LoginApp('app');
+</script>
+
+</body>
+</html>
