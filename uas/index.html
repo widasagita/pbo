@@ -6,7 +6,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: linear-gradient(135deg, #ff9acb, #8fd3f4);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -16,8 +16,9 @@
       background: #fff;
       padding: 20px;
       width: 300px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
     }
     h2 {
       text-align: center;
@@ -30,10 +31,12 @@
     button {
       width: 100%;
       padding: 8px;
-      background: #4CAF50;
+      background: linear-gradient(90deg, #ff6fae, #6fb8ff);
       color: white;
       border: none;
+      border-radius: 6px;
       cursor: pointer;
+    }
     }
     .user-info {
       text-align: center;
@@ -70,10 +73,14 @@ class LoginApp {
       <input type="text" id="username" placeholder="Username">
       <input type="password" id="password" placeholder="Password">
       <button id="loginBtn">Login</button>
+      <button id="cancelBtn" style="margin-top:8px;background:#f1f1f1;color:#333;border-radius:6px;">Cancel</button>
     `;
 
     document.getElementById('loginBtn')
       .addEventListener('click', () => this.login());
+
+    document.getElementById('cancelBtn')
+      .addEventListener('click', () => this.cancel());
   }
 
   // Proses login
@@ -102,6 +109,12 @@ class LoginApp {
         <p>Selamat datang, <b>${username}</b></p>
       </div>
     `;
+  }
+
+  // Aksi tombol cancel
+  cancel() {
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
   }
 }
 
