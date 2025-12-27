@@ -7,17 +7,19 @@
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #ff9acb, #8fd3f4);
+      margin: 0;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
     }
     .box {
-      background: #fff;
-      padding: 20px;
-      width: 300px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      background: #ffffff;
+      padding: 30px 25px;
+      width: 320px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      text-align: center;
     }
     }
     h2 {
@@ -25,17 +27,31 @@
     }
     input {
       width: 100%;
-      padding: 8px;
-      margin: 8px 0;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
     }
     button {
       width: 100%;
       padding: 8px;
-      background: linear-gradient(90deg, #ff6fae, #6fb8ff);
-      color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      font-weight: bold;
+    }
+
+    #loginBtn {
+      background: linear-gradient(90deg, #ff6fae, #6fb8ff);
+      color: white;
+      margin-top: 10px;
+    }
+
+    #cancelBtn {
+      margin-top: 8px;
+      background: #f0f0f0;
+      color: #444;
     }
     }
     .user-info {
@@ -73,7 +89,7 @@ class LoginApp {
       <input type="text" id="username" placeholder="Username">
       <input type="password" id="password" placeholder="Password">
       <button id="loginBtn">Login</button>
-      <button id="cancelBtn" style="margin-top:8px;background:#f1f1f1;color:#333;border-radius:6px;">Cancel</button>
+      <button id="cancelBtn">Cancel</button>
     `;
 
     document.getElementById('loginBtn')
